@@ -40,6 +40,6 @@ dt = dt.fit(vectorized_features, y)
 
 dot_data = export_graphviz(dt, out_file='test.dot', 
                          feature_names=feature_names,  
-                         class_names=df1['r_stars'],
+                         class_names=['1','2','3','4','5'],
                          filled=True, rounded=True,  
                          special_characters=True) 
