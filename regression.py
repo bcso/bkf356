@@ -2,15 +2,13 @@ import os
 import pymysql.cursors
 from pprint import pprint
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier, export_graphviz
+from sklearn import datasets, linear_model
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.model_selection import train_test_split
 import graphviz
-from numpy import shape
-from sklearn.metrics import accuracy_score
-
-from sklearn.externals.six import StringIO  
-# import pydot 
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import mean_squared_error, r2_score
 
 # Connect to the database
 connection = pymysql.connect(host='localhost',
@@ -39,14 +37,20 @@ df1 = pd.DataFrame(reviews)
 
 y = df1['r_stars']
 X_train, X_test, y_train, y_test = train_test_split(vectorized_features, y, test_size=0.5, random_state=42)
-dt = DecisionTreeClassifier(min_samples_split=20, random_state=99)
-dt = dt.fit(X_train, y_train)
 
-dot_data = export_graphviz(dt, out_file='test.dot', 
-                         feature_names=feature_names,  
-                         class_names=['1','2','3','4','5'],
-                         filled=True, rounded=True,  
-                         special_characters=True) 
+# Create linear regression object
+regr = linear_model.LinearRegression()
 
-y_pred = dt.predict(X_test)
-print accuracy_score(y_test,y_pred)*100
+# Train the model using the training sets
+regr.fit(X_train, y_train)
+
+# Make predictions using the testing set
+y_pred = regr.predict(X_test)
+
+# The coefficients
+print('Coefficients: \n', regr.coef_)
+# The mean squared error
+print("Mean squared error: %.2f"
+      % mean_squared_error(y_test, y_pred))
+# Explained variance score: 1 is perfect prediction
+print('Variance score: %.2f' % r2_score(y_test, y_pred))

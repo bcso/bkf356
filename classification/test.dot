@@ -1,21 +1,21 @@
 digraph Tree {
 node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
 edge [fontname=helvetica] ;
-0 [label=<r_stars &le; 3.5<br/>gini = 0.773<br/>samples = 240<br/>value = [45, 34, 70, 66, 25]<br/>class = 3>, fillcolor="#39e5c506"] ;
-1 [label=<r_stars &le; 2.5<br/>gini = 0.636<br/>samples = 149<br/>value = [45, 34, 70, 0, 0]<br/>class = 3>, fillcolor="#39e5c53d"] ;
+0 [label=<r_stars &le; 3.5<br/>gini = 0.7658<br/>samples = 120<br/>value = [21, 17, 36, 35, 11]<br/>class = 3>, fillcolor="#39e5c503"] ;
+1 [label=<r_stars &le; 2.5<br/>gini = 0.63<br/>samples = 74<br/>value = [21, 17, 36, 0, 0]<br/>class = 3>, fillcolor="#39e5c548"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label=<r_stars &le; 1.5<br/>gini = 0.49<br/>samples = 79<br/>value = [45, 34, 0, 0, 0]<br/>class = 1>, fillcolor="#e581393e"] ;
+2 [label=<r_stars &le; 1.5<br/>gini = 0.4945<br/>samples = 38<br/>value = [21, 17, 0, 0, 0]<br/>class = 1>, fillcolor="#e5813931"] ;
 1 -> 2 ;
-3 [label=<gini = 0.0<br/>samples = 45<br/>value = [45, 0, 0, 0, 0]<br/>class = 1>, fillcolor="#e58139ff"] ;
+3 [label=<gini = 0.0<br/>samples = 21<br/>value = [21, 0, 0, 0, 0]<br/>class = 1>, fillcolor="#e58139ff"] ;
 2 -> 3 ;
-4 [label=<gini = 0.0<br/>samples = 34<br/>value = [0, 34, 0, 0, 0]<br/>class = 2>, fillcolor="#7be539ff"] ;
+4 [label=<gini = 0.0<br/>samples = 17<br/>value = [0, 17, 0, 0, 0]<br/>class = 2>, fillcolor="#7be539ff"] ;
 2 -> 4 ;
-5 [label=<gini = 0.0<br/>samples = 70<br/>value = [0, 0, 70, 0, 0]<br/>class = 3>, fillcolor="#39e5c5ff"] ;
+5 [label=<gini = 0.0<br/>samples = 36<br/>value = [0, 0, 36, 0, 0]<br/>class = 3>, fillcolor="#39e5c5ff"] ;
 1 -> 5 ;
-6 [label=<r_stars &le; 4.5<br/>gini = 0.399<br/>samples = 91<br/>value = [0, 0, 0, 66, 25]<br/>class = 4>, fillcolor="#3c39e59e"] ;
+6 [label=<r_stars &le; 4.5<br/>gini = 0.3639<br/>samples = 46<br/>value = [0, 0, 0, 35, 11]<br/>class = 4>, fillcolor="#3c39e5af"] ;
 0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-7 [label=<gini = 0.0<br/>samples = 66<br/>value = [0, 0, 0, 66, 0]<br/>class = 4>, fillcolor="#3c39e5ff"] ;
+7 [label=<gini = 0.0<br/>samples = 35<br/>value = [0, 0, 0, 35, 0]<br/>class = 4>, fillcolor="#3c39e5ff"] ;
 6 -> 7 ;
-8 [label=<gini = 0.0<br/>samples = 25<br/>value = [0, 0, 0, 0, 25]<br/>class = 5>, fillcolor="#e539c0ff"] ;
+8 [label=<gini = 0.0<br/>samples = 11<br/>value = [0, 0, 0, 0, 11]<br/>class = 5>, fillcolor="#e539c0ff"] ;
 6 -> 8 ;
 }
