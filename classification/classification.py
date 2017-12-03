@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import graphviz
 from numpy import shape
 from sklearn.metrics import accuracy_score
-
+from sklearn import tree
 from sklearn.externals.six import StringIO
 # import pydot
 
@@ -39,11 +39,11 @@ for review in reviews:
         'b_review_count': review['b_review_count'],
         'b_hood': review['b_hood'],
         'b_name': review['b_name'],
-        # 'b_address': review['b_address'],
+        'b_address': review['b_address'],
         'b_city': review['b_city'],
         'b_state': review['b_state'],
         'b_stars': review['b_stars'],
-        # 'b_postal_code': review['b_pc'],
+        'b_postal_code': review['b_pc'],
         'c_category': review['c_category'],
     }
     X.append(row)
@@ -53,21 +53,21 @@ vec = DictVectorizer()
 vectorized_features = vec.fit_transform(X).toarray()
 feature_names = vec.get_feature_names()
 
-X_train, X_test, y_train, y_test = train_test_split(vectorized_features, y, test_size=0.5, random_state=42)
-dt = DecisionTreeClassifier(min_samples_split=100, random_state=99, max_depth=45)
+X_train, X_test, y_train, y_test = train_test_split(vectorized_features, y, test_size=0.5, random_state=30)
+dt = DecisionTreeClassifier(random_state=None, max_depth=35)
 dt = dt.fit(X_train, y_train)
 
-dot_data = export_graphviz(dt, out_file='test.dot',
-                         feature_names=feature_names,
-                         class_names=['1','2','3','4','5'],
-                         filled=True, rounded=True,
-                         special_characters=True)
+dot_data = export_graphviz(dt, out_file='test.dot', feature_names=feature_names, max_depth=5)
 
 y_pred = dt.predict(X_test)
 print('Decision Tree accuracy: %.2f' % (accuracy_score(y_test,y_pred)*100))
 
 
-clf = RandomForestClassifier(max_depth=45, random_state=0)
-clf.fit(X_train, y_train)
-y_pred = clf.predict(X_test)
-print('Random Forest accuracy: %.2f' % (accuracy_score(y_test,y_pred)*100))
+# my_file = tree.export_graphviz(ftree, out_file='test.dot',filled=True, rounded=True,
+# special_characters=True)
+# print ftree.getmembers(tree_in_forest.tree_)
+# dot_data = export_graphviz(dt, out_file='test.dot',
+#                          feature_names=feature_names,
+#                          class_names=['category','state','city','neighborhood','address'],
+#                          filled=True, rounded=True,
+#                          special_characters=True)
