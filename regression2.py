@@ -64,3 +64,5 @@ print("Mean squared error: %.2f" % mean_squared_error(y_test, y_pred))
 # Explained variance score: 1 is perfect prediction
 print('Explained Variance score: %.2f' % explained_variance_score(y_test, y_pred))
 print('R2 score: %.2f' % r2_score(y_test, y_pred))
+
+print regr.coef_
