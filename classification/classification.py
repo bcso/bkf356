@@ -17,7 +17,7 @@ from sklearn.ensemble import RandomForestClassifier
 connection = pymysql.connect(host='localhost',
                              user='root',
                              # Set your password by typing this into your shell: export MYSQL_PASS='your_password'
-                             password="passcode",
+                             password=os.environ.get("MYSQL_PASS", ''),
                              db='yelp_db',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
